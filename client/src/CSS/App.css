@@ -1,0 +1,167 @@
+/* CSS Reset */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin and padding */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set default font family and size */
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  position: absolute; 
+  margin: 0;
+  padding: 0;
+  /* overflow-y: auto;*/
+  overflow-x: hidden; 
+}
+
+/* Remove list styles */
+ol,
+ul {
+  list-style: none;
+}
+
+/* Reset heading margins */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+/* Reset links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body{
+  background-color: #FFDAB9;
+}
+
+/* Reset form elements */
+input,
+button,
+textarea,
+select {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  outline: none;
+}
+
+/* Apply a default border-box to images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reset button styles */
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.content-wrapper{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Style the header */
+header {
+  background-color: #ffffff;
+  color: #292929;
+  padding: 60px 20px 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* Style the main content */
+main {
+  flex-grow: 1; /* Allow the main content to expand to fill remaining space */
+  padding: 20px;
+}
+
+/* Style the responsive footer */
+.responsive-footer {
+  background-color: #ffffff;
+  color: #292929;
+  padding: 10px 0;
+  border-top: 1px solid #ddd; /* Add a top border for the separator line */
+  bottom: 0; /* Stick it to the bottom */
+  left: 0;
+  right: 0;
+}
+
+/* Style the content within the responsive footer */
+.responsive-footer .content {
+  max-width: 1200px; /* Set a maximum width for the content */
+  margin: 0 auto; /* Center the content horizontally */
+  padding: 0 20px; /* Add some padding to the content */
+  text-align: center;
+}
+
+::-webkit-scrollbar {
+  width: 12px; /* Set the width of the scrollbar */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the handle */
+  border-radius: 6px; /* Round the corners of the handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the handle on hover */
+}
+
+@media screen and (max-width: 768px) {
+  /* CSS for screens up to 768px wide (e.g., tablets) */
+
+  .content-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .topic-select {
+    width: 100%; /* Full width for smaller screens */
+    max-width: none; /* Remove max width for smaller screens */
+  }
+
+  .generate-excercise-btn {
+    font-size: 16px; /* Adjust font size for smaller screens */
+  }
+
+  /* Add more responsive styles as needed */
+}
+
