@@ -1,6 +1,7 @@
 import express, { response } from 'express';
 import fetch from 'node-fetch';
 import dotenv from "dotenv";
+import Exercise from '../Schemas/excerciseSchema.js';
 import { openai } from '../index.js';
 
 dotenv.config();
@@ -8,14 +9,18 @@ const router = express()
 
 router.post('/generate-prompt', async (req, res) => {
     try{
-        const { topic } = req.body;
+        const { topic, answer, readingExcercise} = req.body;
         console.log("topic: ", topic)
+        console.log("answer: ", answer)
+        console.log("readingExcercise: ", readingExcercise)
+
         const response = await openai.createChatCompletion({
             model: "gpt-3.5-turbo",
             messages: [
-                { role: "system", content: "You are a tutor."},
-                { role: "user", content: `Give me a reading comprehension exercise about ${topic}. Don't provide solutions.`}
-            ],
+                { role: "system", content: "You tutor through reading comprehension excercises."},
+                { role: "user", content: `Give me exactly 1 reading comprehension exercise about ${topic} with exactly 4 paragraphs. After each paragraph use "<br/><br/>" to symbolize a new paragraph is needed. Start every reading excercise with "Reading Comprehension Exercise: <title-goes-here> <br/><br/>". Never use more than two "<br/>" The question section starts with "Questions: <br/>". There will only be one question section at the end providing 4 questions. After each question put "<br/>". Don't provide solutions. Do not ever use quotations. Never use the following phrases: "Paragraph 1:", Paragraph 2:", Paragraph 3:", or Paragraph 4:"`},
+                { role: "assistant", content: `This is the reading comprehension excercise: ${readingExcercise}. This is the user's response to the reading excercise questions: ${answer}. Spartan; Conversational; Encouraging; Provide feedback on how well the user performed. Before "1." put "<br/>". After each answer put "<br/><br/>" before the next number` }
+            ], 
         });
 
         const data = response.data.choices[0];
@@ -25,6 +30,25 @@ router.post('/generate-prompt', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 
+});
+
+router.post('/save-excercise', async (req, res) => {
+    try {
+        const { topic, answer, readingExercise, evaluation } = req.body;
+        const exercise = new Exercise({
+            topic,
+            readingExercise,
+            answer,
+            evaluation,
+        });
+
+        await exercise.save();
+
+        res.status(200).json({ message: 'Exercise saved successfully' });
+    } catch (error) {
+        console.error('Error saving exercise:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
 
 export default router

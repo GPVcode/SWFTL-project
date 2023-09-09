@@ -7,9 +7,9 @@
   justify-content: space-between;
   position: relative;
   padding: 0.5rem 0rem;
-  background-color: #ffffff;
+  background-color: #f5f5f4;
   color: rgb(226, 226, 226);
-  box-shadow: 0px 5px 20px rgba(118, 118, 118, 0.2);
+  /* box-shadow: 0px 5px 20px rgba(118, 118, 118, 0.2); */
   z-index: 10;
   }
   

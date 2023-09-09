@@ -5,7 +5,7 @@
   align-items: center;
   box-shadow: 0 2px 10px rgb(92 92 92 / 20%);
   margin: 20px;
-  background-color: rgb(255, 255, 255);
+  background-color: #f5f5f4;
   border-radius: 12px;
   max-width: none; /* Add this line to set maximum width */
 
@@ -66,15 +66,24 @@
 
 /* Response Section */
 .response {
-  background-color: #f8f8f8;
+  background-color: #f5f5f4;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
   max-width: 600px;
   margin: 20px;
   min-width: 601px;
 }
 
+.solution-response{
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  margin: 0 20px 20px 20px;
+  min-width: 601px;
+}
 .ai-response p {
   font-size: 16px;
   color: #333;
@@ -95,7 +104,7 @@
   /* flex-direction: column; */
   align-items: center; /* Center-align child elements horizontally */
   text-align: center; /* Center-align text horizontally */
-  padding: 20px; /* Add padding for spacing */
+  padding: 20px 20px 10px 20px; /* Add padding for spacing */
   min-width: 640px;
 }
 
@@ -105,7 +114,7 @@
   font-size: 18px;
   font-weight: bold;
   color: #333;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 .user-answer textarea {
@@ -113,13 +122,66 @@
     min-width: 300px;
     background-color: #f8f8f8;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     max-width: 600px;
-    margin: 0px 0px 40px 20px;
+    margin: 0px 0px 10px 20px;
     font-size: 16px;
     resize: vertical;
 
+}
+
+.submit-answer-btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  margin-right: 40px;
+}
+
+
+.submit-answer-btn {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-answer-btn:hover {
+  background-color: #0056b3;
+}
+
+.recall-btn {
+  background-color: #ae00ff;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 15px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;  
+}
+
+.recall-btn:hover {
+  background-color: #4a026c;
+}
+
+.save-btn {
+  background-color: #566ef5;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 15px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;  
+}
+
+.save-btn:hover {
+  background-color: rgb(102, 3, 151);
 }
 
 /* Media query for mobile */

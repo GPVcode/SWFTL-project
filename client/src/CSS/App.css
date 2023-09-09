@@ -56,7 +56,7 @@ a {
 }
 
 body{
-  background-color: #FFDAB9;
+  background-color: #f5f5f4;
 }
 
 /* Reset form elements */
@@ -96,7 +96,7 @@ button {
 
 /* Style the header */
 header {
-  background-color: #ffffff;
+  background-color: #f5f5f4;
   color: #292929;
   padding: 60px 20px 20px;
   border-radius: 12px;
@@ -111,7 +111,7 @@ main {
 
 /* Style the responsive footer */
 .responsive-footer {
-  background-color: #ffffff;
+  background-color: #f5f5f4;
   color: #292929;
   padding: 10px 0;
   border-top: 1px solid #ddd; /* Add a top border for the separator line */
