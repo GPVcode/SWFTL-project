@@ -146,7 +146,7 @@ const Interface = () => {
             ></textarea>
         </div>
         <div className="submit-answer-btn-container">
-            <button onClick={() => console.log("save")} className='save-btn'>Save</button>
+            <button onClick={handleSave} className='save-btn'>Save</button>
             <button onClick={() => console.log("hide reading prompt")} className='recall-btn'>Recall</button>
             <button onClick={handleUserAnswerSubmit} className='submit-answer-btn'>Submit</button>
         </div>

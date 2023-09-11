@@ -1,0 +1,42 @@
+.exercise-selection{
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    position: relative;
+    z-index: 11;
+    display: flex;
+    justify-content: space-between;
+}
+
+.exercise-selection:hover{
+    background-color: #f4f4f4;
+}
+
+.exercise-link{
+    display: flex;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+.left-content{
+    flex: 1;
+}
+
+.right-content{
+    flex: 1;
+    text-align: right;
+}
+.topic {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.date {
+    color: #777;
+}
+
+.snippet{
+    font-style: italic;
+}

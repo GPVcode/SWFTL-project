@@ -3,15 +3,19 @@ import React from 'react';
 // import Navbar from "./components/Navbar.jsx";
 import Navbar from './components/Navbar/Navbar';
 import HomePage from "./components/HomePage.jsx";
+import ExerciseList from './components/Exercises/ExerciseList.jsx';
+import ExerciseDetail from './components/Exercises/ExerciseDetail.jsx'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
+
 function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        
+        <Route path="/exercises" element={<ExerciseList />} />
+        <Route path="/exercises/:id" element={<ExerciseDetail />} />
         {/* <Route path="/login" element={<Login />} /> */}
         {/* <Route path="/register" element={<Register />} /> */}
         {/* <Route path="/oauth/google/callback" element={<GoogleOAuthCallback />} /> */}

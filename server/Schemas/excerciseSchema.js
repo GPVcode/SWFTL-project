@@ -5,6 +5,7 @@ const exerciseSchema = new mongoose.Schema({
     readingExercise: String,
     answer: String,
     evaluation: String,
+    dateCreated: { type: Date, default: Date.now },
 });
 
 const Exercise = mongoose.model('Exercise', exerciseSchema);

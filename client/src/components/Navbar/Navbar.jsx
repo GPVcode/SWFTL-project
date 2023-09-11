@@ -59,7 +59,7 @@ const Navbar = () => {
             <Link to="/about" onClick={handleCloseMenu}>About</Link>
           </li>
           <li>
-            <Link to="/contact" onClick={handleCloseMenu}>Contact</Link>
+            <Link to="/exercises" onClick={handleCloseMenu}>Exercises</Link>
           </li>
           <li>
             {/* {isAuthenticated ? (    

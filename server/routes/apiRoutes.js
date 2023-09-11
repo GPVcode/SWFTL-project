@@ -5,14 +5,12 @@ import Exercise from '../Schemas/excerciseSchema.js';
 import { openai } from '../index.js';
 
 dotenv.config();
-const router = express()
+const router = express();
 
 router.post('/generate-prompt', async (req, res) => {
     try{
         const { topic, answer, readingExcercise} = req.body;
-        console.log("topic: ", topic)
-        console.log("answer: ", answer)
-        console.log("readingExcercise: ", readingExcercise)
+ 
 
         const response = await openai.createChatCompletion({
             model: "gpt-3.5-turbo",
@@ -22,14 +20,12 @@ router.post('/generate-prompt', async (req, res) => {
                 { role: "assistant", content: `This is the reading comprehension excercise: ${readingExcercise}. This is the user's response to the reading excercise questions: ${answer}. Spartan; Conversational; Encouraging; Provide feedback on how well the user performed. Before "1." put "<br/>". After each answer put "<br/><br/>" before the next number` }
             ], 
         });
-
         const data = response.data.choices[0];
         res.status(200).send(data)
     } catch (error){
         console.error('Error fetching response from OpenAI:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
-
 });
 
 router.post('/save-excercise', async (req, res) => {
@@ -48,6 +44,32 @@ router.post('/save-excercise', async (req, res) => {
     } catch (error) {
         console.error('Error saving exercise:', error);
         res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+router.get('/exercises', async (req, res) => {
+    try{
+        const exercises = await Exercise.find().sort({ dateCreated: -1 }); // Get exercises in descending order
+        res.status(200).json(exercises);
+    } catch(error) {
+        console.error('Error fetching exercises:', error);
+        res.status(500).json({error: 'Internal Server Error'})
+    }
+});
+
+router.get('/exercises/:id', async (req, res) => {
+    const { id } = req.params;
+    console.log("ID from server", id)
+    try{
+        const exercise = await Exercise.findById(id);
+        if(!exercise){
+            return res.status(404).json({ error: 'Exercise not found' });
+        }
+        console.log("server exercise: ", exercise)
+        res.status(200).json(exercise)
+    } catch(error){
+        console.error('Error fetching exercise: ', error);
+        res.status(500).json({error: 'Internal Server Error'});
     }
 });
 
