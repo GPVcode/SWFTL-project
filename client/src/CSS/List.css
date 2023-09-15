@@ -1,3 +1,12 @@
+.list-wrapper{
+    z-index: 10;
+    position: relative;
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+
+}
+
 .exercise-selection{
     border: 1px solid #ccc;
     padding: 10px;
@@ -7,10 +16,14 @@
     z-index: 11;
     display: flex;
     justify-content: space-between;
+    border-radius: 20px;
+    transition: 0.3s ease-in; /* Add box-shadow transition */
 }
 
 .exercise-selection:hover{
     background-color: #f4f4f4;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 2px;
 }
 
 .exercise-link{
@@ -21,16 +34,17 @@
 }
 
 .left-content{
-    flex: 1;
+    display: flex;
+    align-items: center;
 }
 
 .right-content{
     flex: 1;
     text-align: right;
+    align-self: center;
 }
 .topic {
     font-weight: bold;
-    margin-bottom: 5px;
 }
 
 .date {
@@ -40,3 +54,97 @@
 .snippet{
     font-style: italic;
 }
+
+.reading-list{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px 20px 20px;
+    width: -webkit-fill-available;
+
+}
+
+.control-row {
+    display: flex;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #ec640f;
+    min-height: 47px;
+    border-radius: 2px;
+}
+
+.trash-icon {
+    margin-left: 20px;
+    transition: .4s ease-in;
+    transform: scale(1);
+    border: 5px solid transparent; /* Add transparent border */
+
+}
+
+.trash-icon:hover {
+    cursor: pointer;
+    background-color: #bababa;
+    border-radius: 50px;
+    transform: scale(1.1); /* Scale on hover */
+    border-color: transparent; /* Set border color to transparent on hover */
+
+}
+
+.checkbox:hover{
+    cursor: pointer;
+    background-color: #777;
+    border-radius: 50px;
+    transform: scale(1.1); /* Scale on hover */
+    border-color: transparent; /* Set border color to transparent on hover */
+}
+
+.list-title{
+    margin: 0 20px;
+    font-family: 'Libre Baskerville', serif;
+}
+
+.exercise-list-container {
+    display: flex;
+  }
+  
+  .exercise-list-container .button-column {
+    width: 100%; /* Adjust width as needed */
+    padding: 10px;
+  }
+  
+  .exercise-list-container .exercise-list {
+    flex: 1;
+  }
+
+.newBtn-container {
+    padding: 5px;
+    /* background: #224189; */
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.plus-icon {
+    margin-right: 8px; /* Add some spacing between the icon and text */
+}
+  
+.new-btn {
+    display: flex;
+    align-items: center;
+    /* border: none; */
+    border-bottom: #bababa;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 8px 16px;
+    transition: 0.3s ease-in; /* Add box-shadow transition */
+  }
+  
+  .new-btn:hover {
+    background-color: #dadada; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 20px;
+    padding: 8px 16px;
+  }
+
+  
+  
+  

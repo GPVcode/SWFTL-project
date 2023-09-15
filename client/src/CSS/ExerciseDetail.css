@@ -1,0 +1,46 @@
+/* Add background color for the answer and feedback portion */
+.answer {
+  background-color: #f9f9f9; /* Example color */
+}
+
+.evaluation-box {
+  background-color: #f9f9f9; /* Example color */
+}
+
+.detail-container {
+  padding: 20px;
+}
+
+.list-title {
+  margin-bottom: 10px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.exercise-info {
+  margin-bottom: 20px;
+  font-family: 'Libre Baskerville', serif;
+
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: 'Libre Baskerville', serif;
+
+}
+
+p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.answer p {
+    display: block;
+    margin: 0; /* Optional: removes default margin */
+  }

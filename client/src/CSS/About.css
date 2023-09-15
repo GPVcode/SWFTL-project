@@ -1,0 +1,49 @@
+
+/* Add this to your CSS file */
+
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.title h1 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.our-mission {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    padding-top: 30px;
+}
+
+.team-members {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    align-items: center;
+}
+
+.team-members img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 10px;
+    object-fit: cover;
+}
+
+
+.contact-us a {
+    text-decoration: none;
+    color: #616161;
+}
+
+.contact-us a:hover {
+    color: #555;
+    cursor: pointer;
+}

@@ -24,7 +24,7 @@ ul {
 
 /* Set default font family and size */
 body {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
   font-size: 16px;
   position: absolute; 
   margin: 0;
@@ -92,6 +92,7 @@ button {
   align-items: center;
   flex-direction: column;
   position: relative;
+  z-index: 10;
 }
 
 /* Style the header */

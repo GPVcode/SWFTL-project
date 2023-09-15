@@ -23,9 +23,6 @@ const Navbar = () => {
 
   return (
     <nav className="navigation">
-      <Link to='/' className="brand-name">
-        <img src={SWFTLogo} alt="Logo" className='logo'/>
-      </Link>
       <button 
         className="hamburger"
         onClick={() => {
@@ -57,9 +54,6 @@ const Navbar = () => {
           </li>
           <li>
             <Link to="/about" onClick={handleCloseMenu}>About</Link>
-          </li>
-          <li>
-            <Link to="/exercises" onClick={handleCloseMenu}>Exercises</Link>
           </li>
           <li>
             {/* {isAuthenticated ? (    

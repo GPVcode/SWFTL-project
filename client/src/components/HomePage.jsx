@@ -1,15 +1,11 @@
 import React from 'react'
-import Interface from './Interface/Interface.jsx'
-
+import ExerciseList from './Exercises/ExerciseList.jsx';
 const HomePage = () => {
   
-  return (
-    <div className='content-wrapper'>
-     
+  return (     
       <main>
-        <Interface /> 
+        <ExerciseList /> 
       </main>
-    </div>
   );
 };
 export default HomePage

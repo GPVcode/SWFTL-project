@@ -15,8 +15,8 @@ router.post('/generate-prompt', async (req, res) => {
         const response = await openai.createChatCompletion({
             model: "gpt-3.5-turbo",
             messages: [
-                { role: "system", content: "You tutor through reading comprehension excercises."},
-                { role: "user", content: `Give me exactly 1 reading comprehension exercise about ${topic} with exactly 4 paragraphs. After each paragraph use "<br/><br/>" to symbolize a new paragraph is needed. Start every reading excercise with "Reading Comprehension Exercise: <title-goes-here> <br/><br/>". Never use more than two "<br/>" The question section starts with "Questions: <br/>". There will only be one question section at the end providing 4 questions. After each question put "<br/>". Don't provide solutions. Do not ever use quotations. Never use the following phrases: "Paragraph 1:", Paragraph 2:", Paragraph 3:", or Paragraph 4:"`},
+                { role: "system", content: "You are an assistant."},
+                { role: "user", content: `Give me exactly 1 reading comprehension exercise about ${topic} with 4 paragraphs. After each paragraph put two break elements "<br/><br/>". Start with the title such as the following: "Title: <title-goes-here>". Put two break elements "<br/><br/>" after the title. Do not use more than two break elements in a row. The question section title is "Questions:". Put two break elements "<br/><br/>" after the questions section title. Always have break elements. There will only be one question section at the end providing 4 questions. After each question put two break elements "<br/><br/>". Don't provide solutions. Do not ever use quotations. Two break elements after the title. Identify paragraphs using indentation. `},
                 { role: "assistant", content: `This is the reading comprehension excercise: ${readingExcercise}. This is the user's response to the reading excercise questions: ${answer}. Spartan; Conversational; Encouraging; Provide feedback on how well the user performed. Before "1." put "<br/>". After each answer put "<br/><br/>" before the next number` }
             ], 
         });
