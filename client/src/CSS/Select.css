@@ -126,13 +126,13 @@
 .response{
   padding: 20px; 
 	max-width: 600px;
-  min-width: 601px;
+  /* min-width: 601px; */
 }
 
 .solution-response {
   padding: 20px;
   max-width: 600px;
-  min-width: 601px;
+  /* min-width: 601px; */
 }
 
 
@@ -157,7 +157,7 @@
   align-items: center;
   text-align: center;
   padding: 0px 20px 0px 20px;
-  min-width: 640px;
+  /* min-width: 640px; */
 }
 
 /* User Answer Section */
@@ -171,7 +171,7 @@
 
 .user-answer textarea {
   width: 100%;
-  min-width: 300px;
+  min-width: 250px;
   background-color: #f8f8f8;
   padding: 10px;
   border-radius: 12px;
@@ -221,8 +221,8 @@
 @media screen and (max-width: 768px) {
   
   .select {
-    flex-direction: column; 
-    align-items: flex-start; 
+    align-items: center;
+    flex-direction: row;
   }
   .submit-btn {
     display: flex;
