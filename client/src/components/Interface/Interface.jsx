@@ -7,7 +7,7 @@ import {
     selectOpenAIResponse, 
     selectAiEvaluation, 
 } from '../../slices/openaiSlice';
-import reactHTMLParser from 'react-html-parser';
+import reactHTMLParser from 'html-react-parser';
 // import ExerciseList from '../Exercises/ExerciseList';
 
 

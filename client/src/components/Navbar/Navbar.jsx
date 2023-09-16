@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import '../../CSS/Navbar.css'; // Import your custom CSS for styling
-import SWFTLogo from '../../assets/SWFT Horizontal.svg'
 
 const Navbar = () => {
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectSavedExercises } from '../../slices/exerciseSlice';
-import reactHTMLParser from 'react-html-parser';
+import reactHTMLParser from 'html-react-parser';
 import '../../CSS/ExerciseDetail.css';
 
 const ExerciseDetail = () => {
