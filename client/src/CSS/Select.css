@@ -12,7 +12,7 @@
 .select {
   display: flex;
   flex-wrap: wrap;
-  min-width: 100%;
+  /* min-width: 100%; */
   padding: 0px 0px 20px 20px;
 }
 

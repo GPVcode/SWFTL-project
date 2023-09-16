@@ -1,7 +1,7 @@
 .navigation{
   height: 60px;
   width: 100vw; /* Use 100% of the viewport width */
-  min-width: 730px;
+  /* min-width: 730px;git  */
   display: flex;
   align-items: center;
   justify-content: space-between;
