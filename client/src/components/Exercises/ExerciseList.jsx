@@ -11,14 +11,12 @@ const ExerciseList = () => {
     const dispatch = useDispatch();
     const savedExercises = useSelector(selectSavedExercises);
 
-    console.log("Saved Exercises: ", savedExercises)
-
     const [ selectedExercises, setSelectedExercises ] = useState([]);
 
     useEffect(() => {
         const fetchSavedExercises = async () => {
             try{
-                const response = await fetch('http://localhost:3333/api/exercises');
+                const response = await fetch('https://swift-learnings.onrender.com/api/exercises');
                 if(response.ok){
                     const data = await response.json();
                     dispatch(setSavedExercises(data));
@@ -78,7 +76,7 @@ const ExerciseList = () => {
           const exerciseIdsToDelete = selectedExercises.map(exercise => exercise._id);
   
           try {
-              const response = await fetch('http://localhost:3333/api/exercises', {
+              const response = await fetch('https://swift-learnings.onrender.com/api/exercises', {
                   method: 'DELETE',
                   headers: {
                       'Content-Type': 'application/json',
@@ -151,7 +149,6 @@ const ExerciseList = () => {
                           } else {
                             truncatedText = exerciseText.substring(0, 50);
                           }
-                          // console.log("truncated Text: ", truncatedText)
                           return truncatedText
                         })()}
                       </p>  

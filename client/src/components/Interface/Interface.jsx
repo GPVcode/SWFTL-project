@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import '../../CSS/Select.css'; // Import your custom CSS for styling
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { 
     setResponse, 
     setAiEvaluation, 
@@ -38,7 +37,7 @@ const Interface = () => {
             dispatch(setAiEvaluation(''));
     
             try {
-                const openAIResponse = await fetch(`http://localhost:3333/api/generate-prompt`, {
+                const openAIResponse = await fetch(`https://swift-learnings.onrender.com/api/generate-prompt`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -69,7 +68,7 @@ const Interface = () => {
     const handleUserAnswerSubmit = async () => {
         setIsLoading(true);
         try{
-            const openAIResponse = await fetch(`http://localhost:3333/api/generate-prompt`, {
+            const openAIResponse = await fetch(`https://swift-learnings.onrender.com/api/generate-prompt`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -93,7 +92,7 @@ const Interface = () => {
     const handleSave = async () => {
         try {
             if(aiEvaluation){
-                const saveResponse = await fetch(`http://localhost:3333/api/save-excercise`, {
+                const saveResponse = await fetch(`https://swift-learnings.onrender.com/api/save-excercise`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -246,6 +245,7 @@ const Interface = () => {
                 </div>
             </div>
 
+            <div className="side">
             <div className="legend">
                         <h2>Legend</h2>
                         <p>
@@ -260,6 +260,13 @@ const Interface = () => {
                         <p className='legend-save-btn'>
                         ➕: Save the exercise.
                         </p>
+            </div>
+            <div className="quote">
+                <h4>
+                "Education is not the learning of facts, but the training of the mind to think." <br/>-Albert Einstein
+                </h4>
+                    
+            </div>
             </div>
 
         </div>

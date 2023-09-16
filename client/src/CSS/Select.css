@@ -205,14 +205,20 @@
   max-width: 800px;
 }
 .legend{
-  /* max-width: 200px; */
   border: #FFDAB9;
   border-style: dashed;
   border-radius: 12px;
   padding: 10px;
   margin-top: 70px;
+  font-size: small;
 }
-.content .legend{
+.quote{
+  max-width: 340px;
+  border: #FFDAB9;
+  border-style: dashed;
+  border-radius: 12px;
+  padding: 10px;
+  margin-top: 70px;
   font-size: small;
 }
 /* Media query for mobile */
