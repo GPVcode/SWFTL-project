@@ -11,42 +11,79 @@
 
 }
 
-
 .select {
   display: flex;
+  /* flex-direction: column; 
+  align-items: center; */
   justify-content: center;
+  flex-wrap: wrap;
+  min-width: 100%;
+  padding-bottom: 20px;
+}
+
+
+.mode {
+  display: flex;
   align-items: center;
-  flex-wrap: wrap; /* Allow elements to wrap on smaller screens */
-  max-width: 600px;
-  margin-bottom: 20px;
+  padding: 10px 10px 10px 0px;
+  font-weight: bold;
+}
+
+.mode p {
+  font-size: 18px;
+  color: #333;
+  margin-right: 5px; 
 }
 
 .topic {
   display: flex;
   align-items: center;
-  padding: 10px 10px;
+  padding: 10px 10px 10px 0px;
+  font-weight: bold;
+
 }
 
 .topic p {
   font-size: 18px;
-  font-weight: bold;
   color: #333;
-  margin-right: 10px; /* Add margin to create space between sentence and select */
+  margin-right: 5px;
 }
 
 .topic-select {
   flex: 1 1;
   padding: 7px;
-  /* background-color: #c9c9c9; */
   max-width: 200px;
   border: #FFDAB9;
   border-style: dashed;
-  border-radius: 12px
+  border-radius: 12px;
+}
+
+.journal-topic-select{
+  flex: 1 1;
+  padding: 7px;
+  max-width: 200px;
+  border: #FFDAB9;
+  border-style: dashed;
+  border-radius: 12px;
+}
+
+.exercise-topic{
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  padding: 0px 10px 0px 10px;
+}
+
+.exercise-topic p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-right: 5px; /* Add margin to create space between sentence and select */
 }
 
 .submit-btn {
-  display: flex; /* Display the button as a flex item */
-  align-items: center; /* Center-align the button vertically */
+  display: flex;
+  align-items: center;
 }
 
 .generate-excercise-btn {
@@ -58,32 +95,68 @@
   border-radius: 12px;
   cursor: pointer;
   transition: 0.4s ease-in;
+  margin-right: 1px
 }
 
 .generate-excercise-btn:hover{
   background-color: #0056b3;
 }
 
-/* Response Section */
-.response {
-  background-color: #f5f5f4;
-  padding: 20px;
-  border-radius: 10px;
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
-  max-width: 600px;
-  margin: 20px;
-  min-width: 601px;
+.recall-btn {
+  background-color: #ae00ff;
+  padding: 7px 10px;
+  font-size: 18px;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.4s ease-in;
+
 }
 
+.recall-btn:hover {
+  background-color: #4a026c;
+}
+
+.save-btn {
+  background-color: #566ef5;
+  padding: 7px 10px;
+  font-size: 18px;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.4s ease-in;
+  margin-right: 1px;
+}
+
+.save-btn:hover {
+  background-color: rgb(102, 3, 151);
+}
+
+/* Response Section */
+.response{
+	/* background-color: #94944a; */
+    	padding: 20px; 
+	    max-width: 600px;
+    	min-width: 601px;
+}
 .solution-response{
-  background-color: #f8f8f8;
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   max-width: 600px;
   margin: 0 20px 20px 20px;
   min-width: 601px;
 }
+
+.solution-response {
+  /* background-color: #94944a; */
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 20px 20px 20px;
+  min-width: 601px;
+}
+
+
 .ai-response p {
   font-size: 16px;
   color: #333;
@@ -92,51 +165,48 @@
 
 /* Style for empty response */
 .ai-response:empty::before {
-  content: "Waiting for AI response..."; /* Text for the empty state */
+
   font-size: 16px;
-  color: #888; /* Use a lighter color for the text */
+  color: #888; 
   text-align: center;
   display: block;
 }
 
 .user-answer {
   display: flex;
-  /* flex-direction: column; */
-  align-items: center; /* Center-align child elements horizontally */
-  text-align: center; /* Center-align text horizontally */
-  padding: 20px 20px 10px 20px; /* Add padding for spacing */
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0px 20px 0px 20px;
   min-width: 640px;
 }
-
 
 /* User Answer Section */
 .user-answer p {
   font-size: 18px;
   font-weight: bold;
   color: #333;
-  /* margin-bottom: 10px; */
+  width: 100%;
+  text-align: left;
 }
 
 .user-answer textarea {
-    width: 100%;
-    min-width: 300px;
-    background-color: #f8f8f8;
-    padding: 10px;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    max-width: 600px;
-    margin: 0px 0px 10px 20px;
-    font-size: 16px;
-    resize: vertical;
-
+  width: 100%;
+  min-width: 300px;
+  background-color: #f8f8f8;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  font-size: 16px;
+  resize: vertical;
 }
 
 .submit-answer-btn-container {
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 20px;
-  margin-right: 40px;
+  margin: 10px 40px 30px 0px;
 }
 
 
@@ -154,67 +224,30 @@
   background-color: #0056b3;
 }
 
-.recall-btn {
-  background-color: #ae00ff;
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  padding: 10px 15px;
-  margin-right: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;  
-}
 
-.recall-btn:hover {
-  background-color: #4a026c;
-}
-
-.save-btn {
-  background-color: #566ef5;
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  padding: 10px 15px;
-  margin-right: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;  
-}
-
-.save-btn:hover {
-  background-color: rgb(102, 3, 151);
-}
 
 /* Media query for mobile */
 @media screen and (max-width: 768px) {
   .select {
     display: flex;
-    flex-direction: column; /* Stack elements vertically on mobile */
-    align-items: center; /* Center-align elements */
+    flex-direction: column; 
+    align-items: center; 
   }
   .submit-btn {
     display: flex;
     justify-content: center;
   }
 
-  .generate-excercise-btn {
-    background-color: #84bcf8;
-    padding: 7px 81px;
-    font-size: 18px;
-    color: #fff;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: 0.4s ease-in;
-}
 
-  .topic{
+  .exercise-topic{
     display: block;
   }
-  .topic p {
+  .exercise-topic p {
     display: block;
     text-align: center;
     justify-content: center;
-    padding: 10px 10px;
+    font-weight: bold;
+    padding: 10px 0px 0px 10px;
     margin: 0;
   }
 }

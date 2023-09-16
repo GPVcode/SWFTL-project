@@ -23,9 +23,7 @@ const ExerciseDetail = () => {
   );
 
   const parsedReadingExercise = reactHTMLParser(modifiedReadingExercise);
-  console.log("parsed", parsedReadingExercise)
 
-  // const parsedReadingExercise = reactHTMLParser(exercise.readingExercise);
   const parsedEval = exercise.evaluation
   .split(/\d+\./)
   .filter(Boolean)

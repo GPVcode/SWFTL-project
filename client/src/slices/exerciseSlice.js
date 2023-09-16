@@ -9,10 +9,14 @@ export const exerciseSlice = createSlice({
         setSavedExercises: (state, action) => {
             state.savedExercises = action.payload;
         },
+        deleteExercises: (state, action) => {
+            const exerciseIdsToDelete = action.payload;
+            state.savedExercises = state.savedExercises.filter(exercise => !exerciseIdsToDelete.includes(exercise._id));
+        },
     },
 });
 
-export const { setSavedExercises } = exerciseSlice.actions;
+export const { setSavedExercises, deleteExercises } = exerciseSlice.actions;
 
 export const selectSavedExercises = (state) => state.exercises.savedExercises;
 

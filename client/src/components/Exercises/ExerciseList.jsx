@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setSavedExercises, selectSavedExercises } from '../../slices/exerciseSlice';
+import { setSavedExercises, selectSavedExercises, deleteExercises } from '../../slices/exerciseSlice';
 import '../../CSS/List.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -11,13 +11,14 @@ const ExerciseList = () => {
     const dispatch = useDispatch();
     const savedExercises = useSelector(selectSavedExercises);
 
+    console.log("Saved Exercises: ", savedExercises)
+
     const [ selectedExercises, setSelectedExercises ] = useState([]);
 
     useEffect(() => {
         const fetchSavedExercises = async () => {
             try{
                 const response = await fetch('http://localhost:3333/api/exercises');
-                // console.log("excerise list response request: ", response)
                 if(response.ok){
                     const data = await response.json();
                     dispatch(setSavedExercises(data));
@@ -72,10 +73,30 @@ const ExerciseList = () => {
       }
     }
 
-    const handleDelete = () => {
+    const handleDelete = async () => {
       if (window.confirm('Are you sure you want to delete the selected exercises?')) {
-        // Implement the delete action here
-    }    };
+          const exerciseIdsToDelete = selectedExercises.map(exercise => exercise._id);
+  
+          try {
+              const response = await fetch('http://localhost:3333/api/exercises', {
+                  method: 'DELETE',
+                  headers: {
+                      'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({ exerciseIds: exerciseIdsToDelete }),
+              });
+  
+              if (response.ok) {
+                dispatch(deleteExercises(exerciseIdsToDelete));
+                setSelectedExercises([]);
+              } else {
+                  console.error('Failed to delete exercises');
+              }
+          } catch (error) {
+              console.error('Error deleting exercises:', error);
+          }
+      }
+  };
 
     return (
       <>
@@ -119,7 +140,7 @@ const ExerciseList = () => {
                     />
                   <Link to={`/exercises/${exercise._id}`} className="exercise-link">
                     <div className="left-content">
-                      <span className='topic'>{exercise.topic}</span>
+                      <span className='exercise-topic'>{exercise.mode}</span>
                       <p className="snippet">
                         {(() => {
                           const exerciseText = exercise.readingExercise;
@@ -130,6 +151,7 @@ const ExerciseList = () => {
                           } else {
                             truncatedText = exerciseText.substring(0, 50);
                           }
+                          // console.log("truncated Text: ", truncatedText)
                           return truncatedText
                         })()}
                       </p>  

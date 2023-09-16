@@ -135,7 +135,7 @@ main {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; /* Color of the handle */
+  background: #f5f5f4; /* Color of the handle */
   border-radius: 6px; /* Round the corners of the handle */
 }
 

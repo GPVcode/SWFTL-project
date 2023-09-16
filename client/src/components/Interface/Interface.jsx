@@ -1,32 +1,57 @@
 import React, { useState } from 'react';
 import '../../CSS/Select.css'; // Import your custom CSS for styling
 import { useDispatch, useSelector } from 'react-redux';
-import { setResponse, setAiEvaluation, selectOpenAIResponse, selectAiEvaluation } from '../../slices/openaiSlice';
+import { 
+    setResponse, 
+    setAiEvaluation, 
+    selectOpenAIResponse, 
+    selectAiEvaluation, 
+} from '../../slices/openaiSlice';
+import {
+    selectSavedExercises,
+} from '../../slices/exerciseSlice';
 import reactHTMLParser from 'react-html-parser';
+// import ExerciseList from '../Exercises/ExerciseList';
 
 
 const Interface = () => {
     const dispatch = useDispatch();
     const response = useSelector(selectOpenAIResponse);
-    // this is for later
     const aiEvaluation = useSelector(selectAiEvaluation);
+    const savedExercises = useSelector(selectSavedExercises);
+
+    console.log("savedExercises", savedExercises);
 
     const [selectedTopic, setSelectedTopic] = useState(''); // Initialize with an empty string
     const [isLoading, setIsLoading] = useState(false); // Add a state variable for loading
-    const [userAnswer, setUserAnswer] = useState('1.\n2.\n3.\n4.\n')
-
+    const [userAnswer, setUserAnswer] = useState('')
+    const [ mode, setMode ] = useState('')
 
     const handleGenerateTopic = async () => {
-        if (selectedTopic !== '') {
+        if (selectedTopic !== '' && mode !== '') {
             setIsLoading(true);
+    
+            if (mode === 'Reading Comprehension' && selectedTopic !== '') {
+                setUserAnswer('1.\n2.\n3.\n4.\n'); // Set userAnswer for Reading mode and valid topic
+            } else if(mode === 'Journaling' && selectedTopic !== ''){
+                setUserAnswer('');
+            }
+    
+            dispatch(setResponse(''));
+            dispatch(setAiEvaluation(''));
+    
             try {
                 const openAIResponse = await fetch(`http://localhost:3333/api/generate-prompt`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ topic: selectedTopic }),
+                    body: JSON.stringify({ 
+                        topic: selectedTopic,
+                        mode: mode
+                    }),
                 });
+    
                 const responseData = await openAIResponse.json();
                 dispatch(setResponse(responseData.message.content));
             } catch (error) {
@@ -34,7 +59,9 @@ const Interface = () => {
             } finally {
                 setIsLoading(false);
             }
-        };
+        } else {
+            alert('Please pick a mode and a topic before generating a response.');
+        }
     };
 
     // Not doing this yet
@@ -43,6 +70,7 @@ const Interface = () => {
     };
 
     const handleUserAnswerSubmit = async () => {
+        setIsLoading(true);
         try{
             const openAIResponse = await fetch(`http://localhost:3333/api/generate-prompt`, {
                 method: 'POST',
@@ -50,14 +78,15 @@ const Interface = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ 
+                    mode: mode,
                     topic: selectedTopic,
                     readingExcercise: response,
                     answer: userAnswer,
                 }),
             });
             const responseData = await openAIResponse.json();
+            setIsLoading(false);
             // CREATE ACTION TO HANDLE AI'S EVALUATION OF THE USER RESPONSE
-            console.log("Evaluation Response: ", responseData.message.content)
             dispatch(setAiEvaluation(responseData.message.content));
         } catch(error){
             console.error('Error fetching response from OpenAI:', error);
@@ -66,24 +95,36 @@ const Interface = () => {
 
     const handleSave = async () => {
         try {
-            const saveResponse = await fetch(`http://localhost:3333/api/save-excercise`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ 
-                    topic: selectedTopic,
-                    readingExercise: response,
-                    answer: userAnswer,
-                    evaluation: aiEvaluation
-                }),
-            });
-    
-            if (saveResponse.ok) {
-                alert('Exercise saved successfully!');
-            } else {
-                alert('Error saving exercise. Please try again later.');
+            if(aiEvaluation){
+                const saveResponse = await fetch(`http://localhost:3333/api/save-excercise`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ 
+                        mode: mode,
+                        topic: selectedTopic,
+                        readingExercise: response,
+                        answer: userAnswer,
+                        evaluation: aiEvaluation
+                    }),
+                });
+                setMode('');
+                setSelectedTopic('');
+                setIsLoading(false);
+                setUserAnswer('');
+                dispatch(setResponse(''));
+                dispatch(setAiEvaluation(''));
+        
+                if (saveResponse.ok) {
+                    alert('Exercise saved successfully!');
+                } else {
+                    alert('Error saving exercise. Please try again later.');
+                }
+            } else if (!aiEvaluation) {
+                alert('Please finish your exercise before saving.')
             }
+            
         } catch (error) {
             console.error('Error fetching response from OpenAI:', error);
             alert('Error saving exercise. Please try again later.');
@@ -94,62 +135,22 @@ const Interface = () => {
 
   return (
    <div className="app-container">
+    <div className="worksheet">
         <header>
-                <h1>Welcome to SWFT Pocket!</h1>
+                <h1>Welcome to SWIFT Pocket!</h1>
         </header>
-        <div className="select">
-        <div className="topic">
-            <p>I want to read about</p>
-            <select
-                className='topic-select'
-                value={selectedTopic}
-                onChange={(e) => setSelectedTopic(e.target.value)}
-            >
-                <option value="" disabled defaultValue={''}>Select An Option</option>
-                <option value="History">History</option>
-                <option value="Science">Science</option>
-                <option value="Programming">Programming</option>
-                <option value="Math">Mathematics</option>
-                <option value="Pop Culture">Pop Culture</option>
-                <option value="Psychology">Psychology</option>
-                <option value="Sports">Sports</option>
-                <option value="Fiction">Fiction</option>
-                <option value="Fantasy">Fantasy</option>
-            </select>
-        </div>
-            <div className="submit-btn">
-                <button onClick={handleGenerateTopic} className="generate-excercise-btn">📖</button>
-            </div>
-        </div>
-
         <div className="response">
             <div className="ai-response">
-                {isLoading ? (
-                    <div className="loader">Loading...</div>
-                ) : (
+                {
                     response ? (
                         <p>{parsedResponse}</p>
                     ) : (
                         <div className="empty-response">Waiting for AI response...</div>
                     )
-                )}
+                }
             </div>
         </div>
 
-        <div className="user-answer">
-            <p>Response:</p>
-            <textarea
-            rows="7" // Adjust the number of rows as needed
-            value={userAnswer}
-            onChange={handleUserAnswerChange}
-            placeholder="Type your answer here..."
-            ></textarea>
-        </div>
-        <div className="submit-answer-btn-container">
-            <button onClick={handleSave} className='save-btn'>Save</button>
-            <button onClick={() => console.log("hide reading prompt")} className='recall-btn'>Recall</button>
-            <button onClick={handleUserAnswerSubmit} className='submit-answer-btn'>Submit</button>
-        </div>
         <div className="solution-response">
             <div className="ai-response">
                 {isLoading ? (
@@ -158,10 +159,95 @@ const Interface = () => {
                     aiEvaluation ? (
                         <p>{parsedEval}</p>
                     ) : (
-                        <div className="empty-response">Waiting for AI evaluation...</div>
+                        <div className="empty-response">AI evaluation...</div>
                     )
                 )}
             </div>
+        </div>
+
+        <div className="select">
+            <div className="mode">
+                <p>Mode:</p>
+                <select
+                    className='topic-select'
+                    value={mode}
+                    onChange={(e) => setMode(e.target.value)}
+                >
+                    <option value="" disabled defaultValue={''}>Select Mode</option>
+                    <option value="Reading">Reading</option>
+                    <option value="Journaling">Journaling</option>
+
+                </select>
+            </div>
+            <div className="topic">
+                <p>Topic:</p>
+                { mode !== 'Journaling' ? 
+                    <select
+                    className='topic-select'
+                    value={selectedTopic}
+                    onChange={(e) => setSelectedTopic(e.target.value)}
+                    >
+                        <option value="" disabled defaultValue={''}>Select Topic</option>
+                        <option value="History">History</option>
+                        <option value="Science">Science</option>
+                        <option value="Programming">Programming</option>
+                        <option value="Math">Mathematics</option>
+                        <option value="Pop Culture">Pop Culture</option>
+                        <option value="Psychology">Psychology</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Fiction">Fiction</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Generate a random topic">Random</option>
+                    </select> :
+                    <select 
+                    className='journal-topic-select'
+                    value={selectedTopic}
+                    onChange={(e) => setSelectedTopic(e.target.value)}
+                    >
+                        <option value="" disabled defaultValue={''}>Select Topic</option>
+                        <option vaue="my day">My Day</option>
+                        <option vaue="Gratitude">Gratitude</option>
+                        <option value="Adventure">Adventure</option>
+                        <option value="Resilience">Resilience</option>
+                        <option value="Creativity">Creativity</option>
+                        <option value="Serenity">Serenity</option>
+                        <option value="Growth">Growth</option>
+                        <option value="Harmony">Harmony</option>
+                        <option value="Discovery">Discovery</option>
+                        <option value="Inspiration">Inspiration</option>
+                        <option value="Joy">Joy</option>
+                    </select>
+                }
+            </div>
+            <div className="submit-btn">
+                <button onClick={handleGenerateTopic} className="generate-excercise-btn">📖</button>
+                <button 
+                    onClick={handleSave} 
+                    // disabled={!aiEvaluation}
+                    className='save-btn'
+                >
+                    ➕
+                </button>
+                {/* <button onClick={() => console.log("hide reading prompt")} className='recall-btn'>👁️‍🗨️</button> */}
+            </div>
+        </div>
+        
+        <div className="user-answer">
+            <p>Response:</p>
+            <textarea
+            rows="7" // Adjust the number of rows as needed
+            value={userAnswer}
+            onChange={handleUserAnswerChange}
+            placeholder="Type your answer here..."
+            ></textarea>
+            <div className="submit-answer-btn-container">
+                <button onClick={handleUserAnswerSubmit} className='submit-answer-btn'>Submit</button>
+            </div>
+        </div>
+    </div>
+        
+        <div className="exercise-list">
+            {/* <ExerciseList mode={mode} /> */}
         </div>
 
    </div>
