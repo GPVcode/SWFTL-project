@@ -22,7 +22,6 @@ const Interface = () => {
     const [userAnswer, setUserAnswer] = useState('');
     const [ mode, setMode ] = useState('');
 
-    console.log("mode: ", mode)
     const handleGenerateTopic = async () => {
         if (selectedTopic !== '' && mode !== '') {
             setIsLoading(true);
