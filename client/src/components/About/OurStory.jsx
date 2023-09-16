@@ -15,16 +15,17 @@ const OurStory = () => {
             <br/><br/>
             Swift Learnings leverages the power of artificial intelligence (AI) to provide tailored feedback and insights, making the learning experience dynamic and personalized. It's not just about technology; it's about the people — the learners who would join us on this voyage. We envisioned a space where minds could roam freely, where questions were welcomed, and where every "aha" moment was celebrated.
             <br/><br/>
+            But we didn't stop there. Recognizing the profound impact of self-reflective journaling on the learning process, we integrated this transformative practice into Swift Learnings. Now, learners have the opportunity to not only absorb knowledge but to also engage with it on a personal level. Journaling prompts provide a space for introspection, allowing learners to connect their own experiences and insights to the material at hand.
+            <br/><br/>
             Collaboration became the cornerstone of our endeavor. We sought out educators, designers, and enthusiasts who shared our vision. Their insights, expertise, and unwavering support were the driving force behind the app's evolution.
             <br/><br/>
             Today, as I gaze upon the realization of this labor of love, I am filled with gratitude. Swift Learnings stands as a testament to the belief that learning should be an adventure — a journey that sparks curiosity, fosters understanding, and leaves an indelible mark on the hearts and minds of those who embark upon it.
-            <br/><br/>
-            This app is not merely a tool; it is a companion in the pursuit of knowledge, a guide through the wondrous world of comprehension. It is the embodiment of a dream, a vision brought to life through determination, passion, and an unwavering belief in the transformative power of education.
             <br/><br/>           
-            As you embark on your own journey through Swift Learnings, know that you are part of a community that cherishes learning. Together, we celebrate the joy of discovery, the thrill of understanding, and the boundless potential that lies within each and every one of us.
+            This app is not merely a tool; it is a companion in the pursuit of knowledge, a guide through the wondrous world of comprehension. It is the embodiment of a dream, a vision brought to life through determination, passion, and an unwavering belief in the transformative power of education.
             <br/>
-            Welcome to Swift Learnings — a place where learning knows no bounds, and where every page is an invitation to explore, discover, and grow.
+            As you embark on your own journey through Swift Learnings, know that you are part of a community that cherishes learning. Together, we celebrate the joy of discovery, the thrill of understanding, and the boundless potential that lies within each and every one of us. Welcome to Swift Learnings — a place where learning knows no bounds, and where every page is an invitation to explore, discover, and grow.
         </p>
+      
     </div>
   )
 }

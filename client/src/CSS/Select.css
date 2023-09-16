@@ -3,24 +3,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 2px 10px rgb(92 92 92 / 20%);
   margin: 20px;
   background-color: #f5f5f4;
   border-radius: 12px;
   max-width: none; /* Add this line to set maximum width */
-
 }
 
 .select {
   display: flex;
-  /* flex-direction: column; 
-  align-items: center; */
-  justify-content: center;
   flex-wrap: wrap;
   min-width: 100%;
-  padding-bottom: 20px;
+  padding: 0px 0px 20px 20px;
 }
 
+.content {
+  display: flex;
+  width: -webkit-fill-available;
+  justify-content: center; /* This will create space between legend and worksheet */
+  align-items: flex-start;
+  padding-top: 50px;
+}
 
 .mode {
   display: flex;
@@ -95,27 +97,11 @@
   border-radius: 12px;
   cursor: pointer;
   transition: 0.4s ease-in;
-  margin-right: 1px
+  margin-right: 5px
 }
 
 .generate-excercise-btn:hover{
   background-color: #0056b3;
-}
-
-.recall-btn {
-  background-color: #ae00ff;
-  padding: 7px 10px;
-  font-size: 18px;
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: 0.4s ease-in;
-
-}
-
-.recall-btn:hover {
-  background-color: #4a026c;
 }
 
 .save-btn {
@@ -127,7 +113,7 @@
   border-radius: 12px;
   cursor: pointer;
   transition: 0.4s ease-in;
-  margin-right: 1px;
+  /* margin-right: 3px; */
 }
 
 .save-btn:hover {
@@ -136,23 +122,14 @@
 
 /* Response Section */
 .response{
-	/* background-color: #94944a; */
-    	padding: 20px; 
-	    max-width: 600px;
-    	min-width: 601px;
-}
-.solution-response{
-  padding: 20px;
-  max-width: 600px;
-  margin: 0 20px 20px 20px;
+  padding: 20px; 
+	max-width: 600px;
   min-width: 601px;
 }
 
 .solution-response {
-  /* background-color: #94944a; */
   padding: 20px;
   max-width: 600px;
-  margin: 0 20px 20px 20px;
   min-width: 601px;
 }
 
@@ -224,10 +201,23 @@
   background-color: #0056b3;
 }
 
-
-
+.worksheet{
+  max-width: 800px;
+}
+.legend{
+  /* max-width: 200px; */
+  border: #FFDAB9;
+  border-style: dashed;
+  border-radius: 12px;
+  padding: 10px;
+  margin-top: 70px;
+}
+.content .legend{
+  font-size: small;
+}
 /* Media query for mobile */
 @media screen and (max-width: 768px) {
+  
   .select {
     display: flex;
     flex-direction: column; 

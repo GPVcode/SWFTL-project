@@ -17,6 +17,7 @@ const About = () => {
                 <p className='our-story'>At Swift Learnings, we are on a mission to revolutionize the way individuals approach learning and comprehension. We believe that education should be an adventure, a journey that sparks curiosity, fosters understanding, and leaves an indelible mark on the hearts and minds of learners worldwide. Through innovative technology and a passion for education, we strive to provide a platform that engages, challenges, and encourages every learner to reach their full potential.
                 </p>
             </div>
+            
 
             <div className="team-members">
                 <img src={require('../../assets/Selfie.jpg')} alt="Team Member 1" className="Me" />

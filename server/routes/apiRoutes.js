@@ -10,9 +10,10 @@ const router = express();
 router.post('/generate-prompt', async (req, res) => {
     try{
         const { topic, mode, answer, readingExcercise} = req.body;
+        console.log("server mode: ", mode)
  
         let response;
-        if(mode === 'Reading Comprehension'){
+        if(mode === 'Reading'){
             response = await openai.createChatCompletion({
                 model: "gpt-3.5-turbo",
                 messages: [
