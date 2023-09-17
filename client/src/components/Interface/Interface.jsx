@@ -38,7 +38,7 @@ const Interface = () => {
             try {               
 
 
-                const openAIResponse = await fetch(`https://swift-learnings.onrender.com/generate-prompt`, {
+                const openAIResponse = await fetch(`https://swift-learnings.onrender.com/api/generate-prompt`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
