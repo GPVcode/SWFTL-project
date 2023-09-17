@@ -104,16 +104,17 @@
 
 .exercise-list-container {
     display: flex;
-  }
+}
   
-  .exercise-list-container .button-column {
+.exercise-list-container .button-column {
     width: 100%; /* Adjust width as needed */
     padding: 10px;
-  }
+    border-right: solid 1px #9a9a9a;
+}
   
-  .exercise-list-container .exercise-list {
+.exercise-list-container .exercise-list {
     flex: 1;
-  }
+}
 
 span.exercise-topic {
     font-weight: bold;

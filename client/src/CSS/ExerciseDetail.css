@@ -41,3 +41,7 @@ p {
     display: block;
     margin: 0; /* Optional: removes default margin */
   }
+
+  .empty-response {
+    color: #868686;
+}
