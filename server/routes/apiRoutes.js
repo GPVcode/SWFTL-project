@@ -10,7 +10,6 @@ const router = express();
 router.post('/generate-prompt', async (req, res) => {
     try{
         const { topic, mode, answer, readingExcercise} = req.body;
-        console.log("server mode: ", mode)
  
         let response;
         if(mode === 'Reading'){

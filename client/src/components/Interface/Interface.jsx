@@ -22,10 +22,10 @@ const Interface = () => {
     const [userAnswer, setUserAnswer] = useState('');
     const [ mode, setMode ] = useState('');
 
+
     const handleGenerateTopic = async () => {
         if (selectedTopic !== '' && mode !== '') {
             setIsLoading(true);
-    
             if (mode === 'Reading' && selectedTopic !== '') {
                 setUserAnswer('1.\n2.\n3.\n4.\n'); // Set userAnswer for Reading mode and valid topic
             } else if(mode === 'Journaling' && selectedTopic !== ''){
@@ -34,8 +34,10 @@ const Interface = () => {
     
             dispatch(setResponse(''));
             dispatch(setAiEvaluation(''));
-    
-            try {
+
+            try {               
+
+
                 const openAIResponse = await fetch(`https://swift-learnings.onrender.com/api/generate-prompt`, {
                     method: 'POST',
                     headers: {
@@ -45,7 +47,8 @@ const Interface = () => {
                         topic: selectedTopic,
                         mode: mode
                     }),
-                });
+                });                
+
     
                 const responseData = await openAIResponse.json();
                 dispatch(setResponse(responseData.message.content));
