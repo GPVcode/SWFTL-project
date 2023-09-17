@@ -121,6 +121,7 @@ header {
 main {
   flex-grow: 1; /* Allow the main content to expand to fill remaining space */
   padding: 20px;
+  width: 100%;
 }
 
 /* Style the responsive footer */
