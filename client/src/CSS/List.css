@@ -98,13 +98,12 @@
 }
 
 .list-title{
-    margin-left: 0;
+    margin-left: 140px;
     font-family: 'Libre Baskerville', serif;
 }
 
 .exercise-list-container {
     display: flex;
-    flex-direction: column;
 }
   
 .exercise-list-container .button-column {
@@ -124,6 +123,7 @@ span.exercise-topic {
 
 .newBtn-container {
     padding: 5px;
+    /* background: #224189; */
     border-radius: 25px;
     display: flex;
     justify-content: center;
@@ -136,32 +136,41 @@ span.exercise-topic {
 .new-btn {
     display: flex;
     align-items: center;
+    /* border: none; */
     border-bottom: #bababa;
     background-color: transparent;
     cursor: pointer;
     padding: 8px 16px;
     transition: 0.3s ease-in; /* Add box-shadow transition */
-}
+  }
   
-.new-btn:hover {
+  .new-btn:hover {
     background-color: #dadada; 
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
     border-radius: 20px;
     padding: 8px 16px;
-}
+  }
 
-@media screen and (max-width: 768px) {
+  
+  
+  @media screen and (max-width: 768px) {
     .exercise-selection {
-      flex-direction: column;
       align-items: center;
       text-align: center;
     }
   
     .control-row {
-      flex-direction: column;
       align-items: center;
       text-align: center;
     }
-}
-  
-  
+
+    .list-wrapper {
+        z-index: 10;
+        position: relative;
+        padding-top: 30px;
+        justify-content: center;
+    }
+    .list-title{
+        font-family: 'Libre Baskerville', serif;
+    }
+  }
