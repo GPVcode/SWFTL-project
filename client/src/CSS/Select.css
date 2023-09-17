@@ -3,94 +3,58 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
+  margin: 40px 20px;
   background-color: #f5f5f4;
   border-radius: 12px;
-  max-width: none; /* Add this line to set maximum width */
+  max-width: 100%;
 }
 
 .select {
   display: flex;
   flex-wrap: wrap;
-  /* min-width: 100%; */
-  padding: 0px 0px 20px 20px;
+  justify-content: center;
+  padding: 20px;
 }
 
 .content {
   display: flex;
-  width: -webkit-fill-available;
-  justify-content: center; /* This will create space between legend and worksheet */
+  justify-content: center;
   align-items: flex-start;
-  padding-top: 50px;
-  padding: 20px;
   max-width: 100%;
 }
 
-.mode {
-  display: flex;
-  align-items: center;
-  padding: 10px 10px 10px 0px;
-  font-weight: bold;
-}
 
-.mode p {
-  font-size: 18px;
-  color: #333;
-  margin-right: 5px; 
-}
 
-.topic {
-  display: flex;
-  align-items: center;
-  padding: 10px 10px 10px 0px;
-  font-weight: bold;
-
-}
-
-.topic p {
+.mode p,
+.topic p,
+.exercise-topic p {
   font-size: 18px;
   color: #333;
   margin-right: 5px;
+  font-weight: bold;
 }
 
-.topic-select {
+.topic-select,
+.journal-topic-select,
+.exercise-topic-select {
   flex: 1 1;
   padding: 7px;
   max-width: 200px;
   border: #FFDAB9;
   border-style: dashed;
   border-radius: 12px;
-}
-
-.journal-topic-select{
-  flex: 1 1;
-  padding: 7px;
-  max-width: 200px;
-  border: #FFDAB9;
-  border-style: dashed;
-  border-radius: 12px;
-}
-
-.exercise-topic{
-  display: flex;
-  align-items: center;
   font-weight: bold;
-  padding: 0px 10px 0px 10px;
-}
 
-.exercise-topic p {
-  font-size: 18px;
-  font-weight: bold;
-  color: #333;
-  margin-right: 5px; /* Add margin to create space between sentence and select */
 }
 
 .submit-btn {
   display: flex;
-  align-items: center;
+  align-items: end;
+  padding-left: 8px;
 }
 
-.generate-excercise-btn {
+.generate-exercise-btn,
+.save-btn {
   background-color: #84bcf8;
   padding: 7px 10px;
   font-size: 18px;
@@ -99,54 +63,28 @@
   border-radius: 12px;
   cursor: pointer;
   transition: 0.4s ease-in;
-  margin-right: 5px
+  margin-right: 2px;
 }
 
-.generate-excercise-btn:hover{
+.generate-exercise-btn:hover,
+.save-btn:hover {
   background-color: #0056b3;
 }
 
-.save-btn {
-  background-color: #566ef5;
-  padding: 7px 10px;
-  font-size: 18px;
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: 0.4s ease-in;
-  /* margin-right: 3px; */
-}
-
-.save-btn:hover {
-  background-color: rgb(102, 3, 151);
-}
-
 /* Response Section */
-.response{
-  padding: 20px; 
-	max-width: 600px;
-  /* min-width: 601px; */
-}
-
-.solution-response {
-  padding: 20px;
-  max-width: 600px;
-  /* min-width: 601px; */
-}
-
-
+.response,
+.solution-response,
 .ai-response p {
   font-size: 16px;
   color: #333;
   line-height: 1.5;
+  padding: 20px;
+  max-width: 100%;
 }
 
-/* Style for empty response */
 .ai-response:empty::before {
-
   font-size: 16px;
-  color: #888; 
+  color: #888;
   text-align: center;
   display: block;
 }
@@ -156,14 +94,13 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 0px 20px 0px 20px;
-  /* min-width: 640px; */
+  padding: 20px, 20px, 0px, 20px;
+  max-width: 100%;
 }
 
-/* User Answer Section */
 .user-answer p {
   font-size: 18px;
-  font-weight: bold;
+  /* font-weight: bold; */
   color: #333;
   width: 100%;
   text-align: left;
@@ -176,7 +113,6 @@
   padding: 10px;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  /* max-width: 600px; */
   font-size: 16px;
   resize: vertical;
 }
@@ -185,9 +121,8 @@
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin: 10px 40px 30px 0px;
+  margin: 30px 0;
 }
-
 
 .submit-answer-btn {
   background-color: #007BFF;
@@ -203,46 +138,74 @@
   background-color: #0056b3;
 }
 
-.worksheet{
-  max-width: 100%;
+.left-filler,
+.side {
+  flex: 1;
+  max-width: 20%;
 }
-.legend, .quote{
+
+.worksheet {
+  flex: 3;
+  max-width: 60%;
+  padding: 20px 20px 0px 20px;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 20%;
+}
+
+.legend,
+.quote {
   border: #FFDAB9;
   border-style: dashed;
   border-radius: 12px;
   padding: 10px;
-  margin-top: 70px;
+  margin-top: 20px;
   font-size: small;
   max-width: 100%;
-  margin-top: 20px;
 }
 
 /* Media query for mobile */
 @media screen and (max-width: 768px) {
-  
   .select {
+
     align-items: center;
-    flex-direction: row;
-  }
-  .submit-btn {
-    display: flex;
-    justify-content: center;
+    flex-flow: row;
   }
 
   .content {
-    display: block;
-    padding-top: 20px;
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .exercise-topic{
-    display: block;
+
+  .worksheet,
+  .left-filler,
+  .side {
+    flex: none;
+    max-width: 100%;
   }
-  .exercise-topic p {
-    display: block;
-    text-align: center;
-    justify-content: center;
-    font-weight: bold;
-    padding: 10px 0px 0px 10px;
-    margin: 0;
+  .generate-exercise-btn,
+  .save-btn {
+    margin-right: 2px;
+    margin-top: 28px;
   }
+
+  .user-answer textarea {
+    min-width: calc(100% - 40px);
+    margin: 10px 0;
+  }
+
+  .submit-btn {
+    display: flex;
+    align-items: end;
+    padding-left: 8px;
+  }
+
+  .mode {
+    padding-right: 2px;
+  }
+
 }

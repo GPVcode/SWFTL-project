@@ -132,6 +132,10 @@ const Interface = () => {
     <div className="app-container">
         <div className="content">
 
+            <div className="left-filler">
+                
+            </div>
+
             
             <div className="worksheet">
                 <header>
@@ -218,7 +222,7 @@ const Interface = () => {
                         }
                     </div>
                     <div className="submit-btn">
-                        <button onClick={handleGenerateTopic} className="generate-excercise-btn">📖</button>
+                        <button onClick={handleGenerateTopic} className="generate-exercise-btn">📖</button>
                         <button 
                             onClick={handleSave} 
                             // disabled={!aiEvaluation}

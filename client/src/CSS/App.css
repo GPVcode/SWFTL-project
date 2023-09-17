@@ -31,8 +31,20 @@ body {
   padding: 0;
   /* overflow-y: auto;*/
   overflow-x: hidden; 
+  min-width: 100%;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Add this at the end of your CSS file */
+body, html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 /* Remove list styles */
 ol,
 ul {

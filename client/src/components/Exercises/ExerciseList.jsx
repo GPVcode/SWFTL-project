@@ -144,10 +144,10 @@ const ExerciseList = () => {
                           const exerciseText = exercise.readingExercise;
 
                           let truncatedText;
-                          if (exerciseText.includes('<') && exerciseText.indexOf('<') < 50) {
+                          if (exerciseText.includes('<') && exerciseText.indexOf('<') < 35) {
                             truncatedText = exerciseText.substring(0, exerciseText.indexOf('<'));
                           } else {
-                            truncatedText = exerciseText.substring(0, 50);
+                            truncatedText = exerciseText.substring(0, 35);
                           }
                           return truncatedText
                         })()}

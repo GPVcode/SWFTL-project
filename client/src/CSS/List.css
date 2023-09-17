@@ -115,6 +115,11 @@
     flex: 1;
   }
 
+span.exercise-topic {
+    font-weight: bold;
+    padding: 0px 5px;
+}
+
 .newBtn-container {
     padding: 5px;
     /* background: #224189; */
