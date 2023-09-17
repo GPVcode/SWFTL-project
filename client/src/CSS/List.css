@@ -165,12 +165,22 @@ span.exercise-topic {
     }
 
     .list-wrapper {
+        display: block;
         z-index: 10;
         position: relative;
         padding-top: 30px;
         justify-content: center;
     }
-    .list-title{
-        font-family: 'Libre Baskerville', serif;
+    .list-title {
+        font-size: 1.5em;
+        display: contents;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .exercise-list-container .button-column {
+        width: 100%; /* Adjust width as needed */
+        padding: 10px;
+        border-right: none;
     }
   }
