@@ -147,7 +147,7 @@
 .worksheet {
   flex: 3;
   max-width: 60%;
-  padding: 20px 20px 0px 20px;
+  padding: 50px 20px 0px 20px;
 }
 
 .side {
@@ -155,6 +155,7 @@
   flex-direction: column;
   justify-content: space-between;
   max-width: 20%;
+  padding-top: 30px;
 }
 
 .legend,
