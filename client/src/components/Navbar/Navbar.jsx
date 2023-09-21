@@ -54,14 +54,14 @@ const Navbar = () => {
           <li>
             <Link to="/about" onClick={handleCloseMenu}>About</Link>
           </li>
-          <li>
-            {/* {isAuthenticated ? (    
+          {/* <li>
+            {isAuthenticated ? (    
               <button className="logout-button" onClick={handleLogout}>Logout</button> // Render logout
             ) : (
               <Link to="/login" onClick={handleCloseMenu}>Start</Link>
-            )} */}
-            <Link to="/login" onClick={handleCloseMenu}>Start</Link>
-          </li>
+            )} 
+             <Link to="/login" onClick={handleCloseMenu}>Start</Link>
+          </li> */}
         </ul>
       </div>
     </nav>
