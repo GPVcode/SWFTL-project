@@ -54,14 +54,14 @@ const Navbar = () => {
           <li>
             <Link to="/about" onClick={handleCloseMenu}>About</Link>
           </li>
-          {/* <li>
-            {isAuthenticated ? (    
+          <li>
+            {/* {isAuthenticated ? (    
               <button className="logout-button" onClick={handleLogout}>Logout</button> // Render logout
             ) : (
               <Link to="/login" onClick={handleCloseMenu}>Start</Link>
-            )} 
-             <Link to="/login" onClick={handleCloseMenu}>Start</Link>
-          </li> */}
+            )} */}
+            <Link to="https://github.com/GPVcode/SWFTL-project" onClick={handleCloseMenu}>Github</Link>
+          </li>
         </ul>
       </div>
     </nav>
